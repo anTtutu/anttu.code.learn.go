@@ -12,7 +12,7 @@ import (
 
 // 手机号正则
 const (
-	regular = "^(13|14|15|16|17|18|19[0-9])\\d{9}$"
+	regular = "^(13|14|15|16|17|18|19)\\d{9}$"
 )
 
 /**
@@ -34,7 +34,7 @@ func readExcel(excelPath string) []string {
 		os.Exit(1)
 	}
 
-	rows, err := xlsx.GetRows(xlsx.GetSheetName(xlsx.GetActiveSheetIndex()))
+	rows := xlsx.GetRows(xlsx.GetSheetName(xlsx.GetActiveSheetIndex()))
 
 	result := make([]string, 0)
 
@@ -126,7 +126,7 @@ func str2MD5(str string) string {
  */
 func main() {
 	// excel路径
-	exlPath := "./精准人群包.xlsx"
+	exlPath := "./test.xlsx"
 
 	// 输出的文本路径
 	desTxtPath := "./result.txt"
