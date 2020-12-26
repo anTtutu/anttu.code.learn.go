@@ -1,12 +1,12 @@
 @echo off
 echo=
 
-echo "闇�瑕佹彁鍓嶅畨瑁呴厤缃苟瀹夎濂絤inGW"
+echo "请先安装好dev C++工具minGW"
 
-echo windres
+echo windresing...
 windres -o md5.exe.syso md5.exe.rc
 
-echo build
+echo building...
 go build -ldflags="-H windowsgui -w -s"
 
 echo=
