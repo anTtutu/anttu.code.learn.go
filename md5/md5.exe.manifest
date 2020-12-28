@@ -3,7 +3,7 @@
 <assemblyIdentity
     version="1.0.0.0"
     processorArchitecture="x86"
-    name="controls"
+    name="md5"
     type="win32"
 />
 <dependency>
