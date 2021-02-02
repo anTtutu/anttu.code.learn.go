@@ -1,25 +1,50 @@
 @echo off
-echo=
+Title build...                                              
+Color 0A
 
-:: 1. minGW，有bug，打包后无法执行，等研究合适了再修复
+REM 澹版槑閲囩敤UTF-8缂栫爜
+chcp 65001
 
-:: echo "请先安装好dev C++工具minGW"
+:menu
+echo =============================================
+echo.
+echo No.1-閫夋嫨鐢╩inGW宸ュ叿鎵撳寘
+echo.
+echo No.2-閫夋嫨鐢╮src宸ュ叿鎵撳寘
+echo.
+echo =============================================
 
-:: echo windresing...
-:: windres -o md5.exe.syso md5.exe.rc
+set /p user_input=璇疯緭鍏ヤ綘鐨勯�夋嫨:
 
-:: echo building...
-:: go build -ldflags="-H windowsgui -w -s"
+if %user_input% equ 1 goto 1
+
+if %user_input% equ 2 goto 2
+
+if %user_input% == '3' exit
+
+pause
+
+:: 1. minGW
+:1
+echo "璇峰厛瀹夎濂絛ev C++宸ュ叿minGW"
+
+echo windresing...
+windres -o md5.exe.syso md5.exe.rc
+
+echo building...
+go build
+goto end
 
 :: 2.rsrc
-
-echo "需要先安装工具命令rsrc，命令：go get github.com/akavel/rsrc" 
+:2
+echo "闇�瑕佸厛瀹夎宸ュ叿鍛戒护rsrc锛屽懡浠わ細go get github.com/akavel/rsrc" 
 
 echo rsrc manifesting...
 rsrc -manifest md5.exe.manifest -o md5.exe.syso -ico md5.ico
 
 echo building...
 go build
+goto end
 
-echo=
-pause
+:end
+echo complete
