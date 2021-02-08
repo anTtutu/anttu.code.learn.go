@@ -161,6 +161,7 @@ func TestValidateIdCard(t *testing.T) {
 }
 
 func TestValidateTaxNo(t *testing.T) {
+	// 税号来源于腾讯、百度、阿里、大疆 公开信息用于测试
 	taxNoDemo1 := "9144030071526726XG"
 	taxNoDemo2 := "91330100799655058B"
 	taxNoDemo3 := "914403007954257495"
@@ -190,5 +191,50 @@ func TestValidateTaxNo(t *testing.T) {
 	boolDemo5 := validateTaxNo(taxNoDemo5)
 	if !boolDemo5 {
 		t.Errorf("5- validate:%t taxNo:%s", boolDemo5, taxNoDemo5)
+	}
+}
+
+func TestValidateDate(t *testing.T) {
+	dateDemo1 := "2019-02-28"
+	dateDemo2 := "2019-02-29"
+	dateDemo3 := "2019-13-01"
+	dateDemo4 := "2019-09-31"
+	dateDemo5 := "2000-02-29"
+	dateDemo6 := "2000-02-28"
+	dateDemo7 := "2020-01-33"
+
+	boolDemo1 := validateDate(dateDemo1)
+	if !boolDemo1 {
+		t.Errorf("1- validate:%t dateStr:%s", boolDemo1, dateDemo1)
+	}
+
+	boolDemo2 := validateDate(dateDemo2)
+	if !boolDemo2 {
+		t.Errorf("2- validate:%t dateStr:%s", boolDemo2, dateDemo2)
+	}
+
+	boolDemo3 := validateDate(dateDemo3)
+	if !boolDemo3 {
+		t.Errorf("3- validate:%t dateStr:%s", boolDemo3, dateDemo3)
+	}
+
+	boolDemo4 := validateDate(dateDemo4)
+	if !boolDemo4 {
+		t.Errorf("4- validate:%t dateStr:%s", boolDemo4, dateDemo4)
+	}
+
+	boolDemo5 := validateDate(dateDemo5)
+	if !boolDemo1 {
+		t.Errorf("5- validate:%t dateStr:%s", boolDemo5, dateDemo5)
+	}
+
+	boolDemo6 := validateDate(dateDemo6)
+	if !boolDemo6 {
+		t.Errorf("6- validate:%t dateStr:%s", boolDemo6, dateDemo6)
+	}
+
+	boolDemo7 := validateDate(dateDemo7)
+	if !boolDemo7 {
+		t.Errorf("7- validate:%t dateStr:%s", boolDemo7, dateDemo7)
 	}
 }
