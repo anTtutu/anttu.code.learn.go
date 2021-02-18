@@ -16,4 +16,6 @@ func main() {
 
 	converter := convert.NewImageConverter()
 	fmt.Print(converter.ImageFile2ASCIIString(path, &o))
+
+	// 目前输出到控制填，下一步输出到txt，彩色需要设计下
 }
