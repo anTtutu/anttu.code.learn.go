@@ -88,7 +88,7 @@ func readExcel(excelPath string, md5Config *config.Md5ToolsConfig) [][]string {
 /**
  * 写excel到新的 sheet 页
  */
-func writeExcelResult2Sheet (filePath string, content [][]string, md5Config *config.Md5ToolsConfig) {
+func writeExcelResult2Sheet(filePath string, content [][]string, md5Config *config.Md5ToolsConfig) {
 	var xlsx *excelize.File
 	var err error
 	// 比较输入和输出 sheet 名称一样就新创建一个 xlsx
@@ -110,7 +110,7 @@ func writeExcelResult2Sheet (filePath string, content [][]string, md5Config *con
 	// 写入读取的 excel 二维数组的md5值
 	for i, row := range content {
 		for j, colCell := range row {
-			cellIndex :=  changIndexToAxis(i, j)
+			cellIndex := changIndexToAxis(i, j)
 			modifyExcelCellByAxis(xlsx, md5Config, cellIndex, colCell)
 		}
 	}
@@ -143,31 +143,31 @@ func writeExcelResult2Sheet (filePath string, content [][]string, md5Config *con
 /**
  * 数据坐标转换成 excel 坐标
  */
-func changIndexToAxis(intIndexX int, intIndexY int ) string{
-	var arr = [...]string{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
+func changIndexToAxis(intIndexX int, intIndexY int) string {
+	var arr = [...]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 	intIndexY = intIndexY + 1
 	resultY := ""
 	for true {
 		if intIndexY <= 26 {
-			resultY = resultY + arr[intIndexY - 1]
+			resultY = resultY + arr[intIndexY-1]
 			break
 		}
 		mo := intIndexY % 26
-		resultY = arr[mo - 1] + resultY
+		resultY = arr[mo-1] + resultY
 		shang := intIndexY / 26
 		if shang <= 26 {
-			resultY = arr[shang - 1] + resultY
+			resultY = arr[shang-1] + resultY
 			break
 		}
 		intIndexY = shang
 	}
-	return resultY + strconv.Itoa(intIndexX + 1)
+	return resultY + strconv.Itoa(intIndexX+1)
 }
 
 /**
  * 二维数组转成excel的坐标后往excel数据
  */
-func modifyExcelCellByAxis( xlsx *excelize.File, md5Config *config.Md5ToolsConfig, axis string, value interface{}) int{
+func modifyExcelCellByAxis(xlsx *excelize.File, md5Config *config.Md5ToolsConfig, axis string, value interface{}) int {
 	var cellValue string
 
 	str := value.(string)
@@ -194,7 +194,7 @@ func modifyExcelCellByAxis( xlsx *excelize.File, md5Config *config.Md5ToolsConfi
 
 func main() {
 	// excel路径
-	excelPath := "./股东数据(1).xlsx"
+	excelPath := "./test.xlsx"
 
 	// config配置文件路径
 	configPath := "./md5Tools.json"
@@ -230,7 +230,7 @@ func main() {
 }
 
 // 带固定盐的 md5，非标准 md5值
-func str2md5Salt (plantStr string, salt string) string {
+func str2md5Salt(plantStr string, salt string) string {
 	saltData := []byte(salt)
 	strData := []byte(plantStr)
 
@@ -243,7 +243,7 @@ func str2md5Salt (plantStr string, salt string) string {
 }
 
 // 不带盐，标准的 md5 值
-func str2md5Normal (plantStr string) string {
+func str2md5Normal(plantStr string) string {
 	data := []byte(plantStr)
 	has := md5.Sum(data)
 	// 将[]byte转成16进制
