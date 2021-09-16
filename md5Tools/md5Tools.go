@@ -64,7 +64,9 @@ func readExcel(excelPath string, md5Config *config.Md5ToolsConfig) [][]string {
 		// 重新给二维数组赋值列数据
 		if breakFlag {
 			for i, v := range col {
-				newRows[i][idx] = v
+				if v != "" {
+					newRows[i][idx] = v
+				}
 			}
 			idx++
 		}
@@ -192,7 +194,7 @@ func modifyExcelCellByAxis( xlsx *excelize.File, md5Config *config.Md5ToolsConfi
 
 func main() {
 	// excel路径
-	excelPath := "./股东测试数据明文.xlsx"
+	excelPath := "./股东数据(1).xlsx"
 
 	// config配置文件路径
 	configPath := "./md5Tools.json"
