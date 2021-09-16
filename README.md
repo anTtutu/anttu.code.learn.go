@@ -10,6 +10,7 @@
 |项目名|介绍|
 |--|--|
 | md5 | 给同事写的手机号转md5工具 |
+| md5Tools | 灵活的脱敏工具 |
 | utiltool\tool\validate.go | 常规工具手机正则校验、身份证号校验、统一社会信用代码校验 |
 | utiltool\toy\pic2ascii.go | pic2ascii艺术码的小玩具 |
 

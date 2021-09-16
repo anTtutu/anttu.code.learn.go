@@ -1,0 +1,12 @@
+{
+  "saltModule": {
+    "activate": "on",
+    "saltKey": "test"
+  },
+  "title": [
+    "AAA",
+    "BBB"
+  ],
+  "inSheetName": "Sheet1",
+  "outSheetName": "Sheet1"
+}
